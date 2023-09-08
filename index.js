@@ -3,7 +3,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 5000;
+const port = process.env.port || 3000;
 
 app.use(express.json());
 app.use(cors());
@@ -17,9 +17,9 @@ const client = new MongoClient(uri, {
   },
 });
 
-(async function run() {
+(async () => {
   try {
-    await client.connect();
+    client.connect();
     const db = await client.db("taskmaster");
     const tasksCollection = db.collection("tasks");
 
@@ -56,7 +56,7 @@ const client = new MongoClient(uri, {
 
       try {
         const result = await tasksCollection.deleteOne({
-          _id: ObjectId(taskId),
+          _id: new ObjectId(taskId),
         });
         if (result.deletedCount === 0) {
           res.status(404).json({ error: "Task not found" });
