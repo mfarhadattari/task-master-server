@@ -6,6 +6,6 @@
 
 ### Add Task (POST): https://taskmaster-server.vercel.app/tasks
 
-### Delete Task (DELETE): https://taskmaster-server.vercel.app/task/id
+### Delete Task (DELETE): https://taskmaster-server.vercel.app/tasks/id
 
-### Update Task (PATCH): https://taskmaster-server.vercel.app/task/id
+### Update Task (PATCH): https://taskmaster-server.vercel.app/tasks/id
